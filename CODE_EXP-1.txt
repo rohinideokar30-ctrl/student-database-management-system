@@ -1,0 +1,530 @@
+
+1. Add Student Records
+#include <iostream>
+using namespace std;
+// Structure definition
+struct Student
+{
+    int rollNo;
+    string name;
+    float marks;
+};
+int main()
+{
+    // Creating structure variables
+    Student s1;
+   
+    // Assign values to s1
+    s1.rollNo = 101;
+    s1.name = "Rohini";
+    s1.marks = 89.5;
+    // Display s1 details
+    cout << "Student Details" << endl;
+    cout << "Roll No : " << s1.rollNo << endl;
+    cout << "Name    : " << s1.name << endl;
+    cout << "Marks   : " << s1.marks << endl;
+    return 0;
+}
+
+
+
+2. Display Student Records
+#include <iostream>
+using namespace std;
+
+// Structure definition
+struct Student
+{
+    int rollNo;
+    string name;
+    float marks;
+};
+
+int main()
+{
+    int n;
+
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    Student s[100];   // Array of structures
+
+    // Input student records
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nEnter details of Student " << i + 1 << endl;
+
+        cout << "Roll Number: ";
+        cin >> s[i].rollNo;
+
+        cout << "Name: ";
+        cin >> s[i].name;
+
+        cout << "Marks: ";
+        cin >> s[i].marks;
+    }
+
+    // Display all records
+    cout << "\n\nStudent Records Database\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+        cout << "Roll Number : " << s[i].rollNo << endl;
+        cout << "Name        : " << s[i].name << endl;
+        cout << "Marks       : " << s[i].marks << endl;
+    }
+
+    return 0;
+}
+
+
+
+3. Search Student Record
+
+#include <iostream>
+using namespace std;
+
+// Structure definition
+struct Student
+{
+    int rollNo;
+    string name;
+    float marks;
+};
+
+int main()
+{
+    Student s[100];
+    int n;
+
+    // Input number of students
+    cout << "Enter Number of Students: ";
+    cin >> n;
+
+    // Input student records
+    cout << "\nEnter Student Details\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+
+        cout << "Enter Roll Number : ";
+        cin >> s[i].rollNo;
+
+        cout << "Enter Name        : ";
+        cin >> s[i].name;
+
+        cout << "Enter Marks       : ";
+        cin >> s[i].marks;
+    }
+
+    // Display all student records
+    cout << "\n========== STUDENT DATABASE ==========\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+        cout << "Roll Number : " << s[i].rollNo << endl;
+        cout << "Name        : " << s[i].name << endl;
+        cout << "Marks       : " << s[i].marks << endl;
+    }
+
+    // Search student by Roll Number
+    int roll;
+    bool found = false;
+
+    cout << "\nEnter Roll Number to Search: ";
+    cin >> roll;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(s[i].rollNo == roll)
+        {
+            cout << "\nStudent Found\n";
+            cout << "Roll Number : " << s[i].rollNo << endl;
+            cout << "Name        : " << s[i].name << endl;
+            cout << "Marks       : " << s[i].marks << endl;
+
+            found = true;
+            break;
+        }
+    }
+
+    if(found == false)
+    {
+        cout << "\nStudent Not Found." << endl;
+    }
+
+    return 0;
+}
+
+
+4. Sort Student Records & 5. modify /update record
+
+#include <iostream>
+using namespace std;
+
+// Structure definition
+struct Student
+{
+    int rollNo;
+    string name;
+    float marks;
+};
+
+int main()
+{
+    Student s[100], temp;
+    int n;
+
+    // Input number of students
+    cout << "Enter Number of Students: ";
+    cin >> n;
+
+    // Add Student Records
+    cout << "\nEnter Student Details\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+
+        cout << "Enter Roll Number : ";
+        cin >> s[i].rollNo;
+
+        cout << "Enter Name        : ";
+        cin >> s[i].name;
+
+        cout << "Enter Marks       : ";
+        cin >> s[i].marks;
+    }
+
+    // Display Student Records
+    cout << "\n========== STUDENT DATABASE ==========\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+        cout << "Roll Number : " << s[i].rollNo << endl;
+        cout << "Name        : " << s[i].name << endl;
+        cout << "Marks       : " << s[i].marks << endl;
+    }
+
+    // Search Student Record
+    int roll;
+    bool found = false;
+
+    cout << "\nEnter Roll Number to Search: ";
+    cin >> roll;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(s[i].rollNo == roll)
+        {
+            cout << "\nStudent Found";
+            cout << "\nRoll Number : " << s[i].rollNo;
+            cout << "\nName        : " << s[i].name;
+            cout << "\nMarks       : " << s[i].marks << endl;
+
+            found = true;
+            break;
+        }
+    }
+
+    if(found == false)
+    {
+        cout << "\nStudent Not Found.\n";
+    }
+
+    // Sort Student Records (Descending Order of Marks)
+    for(int i = 0; i < n - 1; i++)
+    {
+        for(int j = 0; j < n - i - 1; j++)
+        {
+            if(s[j].marks < s[j + 1].marks)
+            {
+                temp = s[j];
+                s[j] = s[j + 1];
+                s[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "\n\nRecords Sorted Successfully.\n";
+
+   // Display Sorted Records
+    cout << "\n===== STUDENTS SORTED BY MARKS =====\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nRoll Number : " << s[i].rollNo;
+        cout << "\nName        : " << s[i].name;
+        cout << "\nMarks       : " << s[i].marks << endl;
+    }
+
+    // Update Student Record
+    found = false;
+
+    cout << "\nEnter Roll Number to Update: ";
+    cin >> roll;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(s[i].rollNo == roll)
+        {
+            cout << "\nStudent Found";
+
+            cout << "\nEnter New Name : ";
+            cin >> s[i].name;
+
+            cout << "Enter New Marks: ";
+            cin >> s[i].marks;
+
+            cout << "\nRecord Updated Successfully.\n";
+
+            found = true;
+            break;
+        }
+    }
+
+    if(found == false)
+    {
+        cout << "\nStudent Not Found.\n";
+    }
+
+    // Display Updated Database
+    cout << "\n===== UPDATED STUDENT DATABASE =====\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nRoll Number : " << s[i].rollNo;
+        cout << "\nName        : " << s[i].name;
+        cout << "\nMarks       : " << s[i].marks << endl;
+    }
+
+    return 0;
+}
+
+
+
+6.  Append Student Record 
+
+
+#include <iostream>
+using namespace std;
+
+// Structure definition
+struct Student
+{
+    int rollNo;
+    string name;
+    float marks;
+};
+
+int main()
+{
+    Student s[100], temp;
+    int n;
+
+    // Input number of students
+    cout << "Enter Number of Students: ";
+    cin >> n;
+
+    // Add Student Records
+    cout << "\nEnter Student Details\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+
+        cout << "Enter Roll Number : ";
+        cin >> s[i].rollNo;
+
+        cout << "Enter Name        : ";
+        cin >> s[i].name;
+
+        cout << "Enter Marks       : ";
+        cin >> s[i].marks;
+    }
+
+    // Display Student Records
+    cout << "\n========== STUDENT DATABASE ==========\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+        cout << "Roll Number : " << s[i].rollNo << endl;
+        cout << "Name        : " << s[i].name << endl;
+        cout << "Marks       : " << s[i].marks << endl;
+    }
+
+    // Search Student Record
+    int roll;
+    bool found = false;
+
+    cout << "\nEnter Roll Number to Search: ";
+    cin >> roll;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(s[i].rollNo == roll)
+        {
+            cout << "\nStudent Found";
+            cout << "\nRoll Number : " << s[i].rollNo;
+            cout << "\nName        : " << s[i].name;
+            cout << "\nMarks       : " << s[i].marks << endl;
+
+            found = true;
+            break;
+        }
+    }
+
+    if(found == false)
+    {
+        cout << "\nStudent Not Found.\n";
+    }
+
+    // Sort Student Records (Descending Order of Marks)
+    for(int i = 0; i < n - 1; i++)
+    {
+        for(int j = 0; j < n - i - 1; j++)
+        {
+            if(s[j].marks < s[j + 1].marks)
+            {
+                temp = s[j];
+                s[j] = s[j + 1];
+                s[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "\nRecords Sorted Successfully.\n";
+
+    // Display Sorted Records
+    cout << "\n===== STUDENTS SORTED BY MARKS =====\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nRoll Number : " << s[i].rollNo;
+        cout << "\nName        : " << s[i].name;
+        cout << "\nMarks       : " << s[i].marks << endl;
+    }
+
+    // Update Student Record
+    found = false;
+
+    cout << "\nEnter Roll Number to Update: ";
+    cin >> roll;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(s[i].rollNo == roll)
+        {
+            cout << "\nStudent Found";
+
+            cout << "\nEnter New Name : ";
+            cin >> s[i].name;
+
+            cout << "Enter New Marks: ";
+            cin >> s[i].marks;
+
+            cout << "\nRecord Updated Successfully.\n";
+
+            found = true;
+            break;
+        }
+    }
+
+    if(found == false)
+    {
+        cout << "\nStudent Not Found.\n";
+    }
+
+    // Append New Student Record
+    cout << "\nEnter New Student Details\n";
+
+    cout << "Roll Number : ";
+    cin >> s[n].rollNo;
+
+    cout << "Name        : ";
+    cin >> s[n].name;
+
+    cout << "Marks       : ";
+    cin >> s[n].marks;
+
+    n++;
+
+    cout << "\nStudent Added Successfully.\n";
+
+    // Display Final Database
+    cout << "\n========== FINAL STUDENT DATABASE ==========\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+        cout << "Roll Number : " << s[i].rollNo << endl;
+        cout << "Name        : " << s[i].name << endl;
+        cout << "Marks       : " << s[i].marks << endl;
+    }
+
+    return 0;
+}
+
+
+ouput:
+Enter Number of Students: 2
+
+Enter Student Details
+
+Student 1
+Enter Roll Number : 401
+Enter Name        : rrrr
+Enter Marks       : 56
+
+Student 2
+Enter Roll Number : 402
+Enter Name        : pppp
+Enter Marks       : 78
+
+========== STUDENT DATABASE ==========
+
+Student 1
+Roll Number : 401
+Name        : rrrr
+Marks       : 56
+
+Student 2
+Roll Number : 402
+Name        : pppp
+Marks       : 78
+
+Enter Roll Number to Search: 402
+
+Student Found
+Roll Number : 402
+Name        : pppp
+Marks       : 78
+
+Records Sorted Successfully.
+
+===== STUDENTS SORTED BY MARKS =====
+
+Roll Number : 402
+Name        : pppp
+Marks       : 78
+
+Roll Number : 401
+Name        : rrrr
+Marks       : 56
+
+Enter Roll Number to Update: 401
+
+Student Found
+Enter New Name : rohit
+Enter New Marks: 65
+
+Record Updated Successfully.
+
+Enter New Student Details
+Roll Number : 403
+Name        : uuuu
